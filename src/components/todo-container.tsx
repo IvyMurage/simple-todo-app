@@ -1,8 +1,11 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import TodoForm from './todo-form'
+import { TodoItemType } from '../types'
+
+
 
 function TodoContainer() {
-    const [tasks, setTasks] = useState<{ [key: string]: string | boolean }[]>([])
+    const [tasks, setTasks] = useState<TodoItemType[]>([])
 
     useEffect(() => {
         const taskItems = localStorage.getItem('tasks')!
@@ -13,10 +16,7 @@ function TodoContainer() {
 
     const taskList = tasks.map((task, index) => {
         return (
-            <div key={index} className='flex justify-between p-2 bg-todoItem'>
-                <p>{task.title}</p>
-                <button className='bg-red-600 p-1 rounded-lg'>Delete</button>
-            </div>
+            <TodoItem {...{ task, index }} />
         )
     })
     return (

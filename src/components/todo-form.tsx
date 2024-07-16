@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
+import { TodoItemType } from '../types'
 
-function TodoForm({ setTasks }: { setTasks: React.Dispatch<React.SetStateAction<{ [key: string]: string | boolean }[]>> }) {
+function TodoForm({ setTasks }: { setTasks: React.Dispatch<React.SetStateAction<TodoItemType[]>> }) {
     const [task, addTask] = useState({
         title: '',
         isCompleted: false

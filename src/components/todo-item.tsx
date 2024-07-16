@@ -1,9 +1,11 @@
-import React from 'react'
+import { TodoItemProps } from "../types";
 
-function TodoItem() {
+export default function TodoItem({ task, index }: TodoItemProps) {
+
     return (
-        <div>TodoItem</div>
-    )
+        <div key={index} className='flex justify-between p-2 bg-todoItem'>
+            <p>{task.title}</p>
+            <button className='bg-red-600 p-1 rounded-lg'>Delete</button>
+        </div>)
 }
 
-export default TodoItem
