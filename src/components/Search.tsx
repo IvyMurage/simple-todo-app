@@ -1,14 +1,16 @@
+import { faFilter } from "@fortawesome/free-solid-svg-icons"
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
+
 function Search() {
     return (
-        <form className="flex justify-end " >
+        <form className="flex mb-8 relative justify-end items-center " >
             <input
                 type='text'
                 placeholder='feed cat...'
                 name='search-todo'
-                className="px-4 py-2 outline-none bg-transparent border-b-1 border-b-frame "
+                className="px-2 py-2 outline-none bg-transparent border-b-1 border-b-frame "
             />
-            <label htmlFor=""></label>
-            <FontAwesomeIcon icon="fa-solid fa-filter" />
+            <FontAwesomeIcon icon={faFilter} className="absolute" />
         </form>
     )
 }

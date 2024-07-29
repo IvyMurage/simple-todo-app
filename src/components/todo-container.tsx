@@ -1,31 +1,37 @@
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import TodoForm from './todo-form'
-import { TodoItemType } from '../types'
 import TodoItem from './todo-item'
 import Search from './Search'
+import { useTodoContextDispatch, useTodoContextState } from '../context/TodoContext'
+import { nanoid } from 'nanoid'
 
 
 
 function TodoContainer() {
-    const [tasks, setTasks] = useState<TodoItemType[]>([])
-
+    const state = useTodoContextState()
+    const dispatch = useTodoContextDispatch()
     useEffect(() => {
+        let ignore = false
         const taskItems = localStorage.getItem('tasks')!
 
-        if (taskItems)
-            setTasks(JSON.parse(taskItems))
-    }, [])
+        if (taskItems && !ignore)
+            dispatch({ type: 'FETCH-TODOS', payload: JSON.parse(taskItems) })
 
-    const taskList = tasks.map((task, index) => {
+        return () => {
+            ignore = true
+        }
+    }, [dispatch])
+
+    const taskList = state.todos.map((task, index) => {
         return (
-            <TodoItem {...{ task, index }} />
+            <TodoItem key={`${index}-${nanoid()}`} {...{ task, index }} />
         )
     })
     return (
         <div className='w-1/2 h-fit text-white p-4 rounded-lg shadow-lg bg-todoContainer'>
             <Search />
             {taskList}
-            <TodoForm setTasks={setTasks} />
+            <TodoForm />
         </div>
     )
 }
