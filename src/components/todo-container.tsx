@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import TodoForm from './todo-form'
 import { TodoItemType } from '../types'
 import TodoItem from './todo-item'
+import Search from './Search'
 
 
 
@@ -21,9 +22,10 @@ function TodoContainer() {
         )
     })
     return (
-        <div className='w-1/2 h-fit text-white p-4 bg-todoContainer'>
-            <TodoForm setTasks={setTasks} />
+        <div className='w-1/2 h-fit text-white p-4 rounded-lg shadow-lg bg-todoContainer'>
+            <Search />
             {taskList}
+            <TodoForm setTasks={setTasks} />
         </div>
     )
 }
