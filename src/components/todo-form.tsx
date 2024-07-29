@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useTodoContextDispatch } from '../context/TodoContext'
+import { nanoid } from 'nanoid'
 
 function TodoForm() {
     const [task, addTask] = useState({
@@ -10,6 +11,7 @@ function TodoForm() {
 
     const handleTaskChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         addTask({
+
             ...task,
             title: e.target.value
         })
@@ -17,13 +19,11 @@ function TodoForm() {
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        const tasks = localStorage.getItem('tasks')
-        if (tasks) {
-            localStorage.setItem('tasks', JSON.stringify([...JSON.parse(tasks), task]))
-        } else {
-            localStorage.setItem('tasks', JSON.stringify([task]))
-        }
-        dispatch({ type: 'ADD-TODO', payload: task })
+        dispatch({
+            type: 'ADD-TODO', payload: {
+                id: nanoid(), ...task
+            }
+        })
         addTask({
             ...task,
             title: ''
