@@ -10,7 +10,7 @@ switch(action.type){
     case 'ADD-TODO': 
     return{
         ...state, 
-        todos:[...state.todos, action.payload]
+        todos:[ action.payload, ...state.todos]
     }
 
     default:

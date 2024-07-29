@@ -1,11 +1,12 @@
 import React, { useState } from 'react'
-import { TodoItemType } from '../types'
+import { useTodoContextDispatch } from '../context/TodoContext'
 
-function TodoForm({ setTasks }: { setTasks: React.Dispatch<React.SetStateAction<TodoItemType[]>> }) {
+function TodoForm() {
     const [task, addTask] = useState({
         title: '',
         isCompleted: false
     })
+    const dispatch = useTodoContextDispatch()
 
     const handleTaskChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         addTask({
@@ -22,8 +23,7 @@ function TodoForm({ setTasks }: { setTasks: React.Dispatch<React.SetStateAction<
         } else {
             localStorage.setItem('tasks', JSON.stringify([task]))
         }
-        setTasks((prevTasks) => [...prevTasks, task])
-        console.log(task)
+        dispatch({ type: 'ADD-TODO', payload: task })
         addTask({
             ...task,
             title: ''

@@ -9,6 +9,7 @@ export default {
       },
       maxWidth: {
         "4/5": "80%",
+        '1/2': '50%'
       },
       spacing: {},
       borderWidth: {
