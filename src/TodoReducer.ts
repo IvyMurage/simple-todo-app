@@ -18,6 +18,11 @@ switch(action.type){
         todos: state.todos.filter(todo => todo.id !== action.payload)
     }
 
+    case 'EDIT-TODO':
+        return {
+            ...state,
+            todos: state.todos.map(todo => todo.id === action.payload.id ? ({...todo, title: action.payload.title}): todo)
+        }
     default:
         return state
 }

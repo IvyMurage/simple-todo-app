@@ -1,5 +1,6 @@
 export type TodoItemProps = {
-  task: { [key: string]: string | boolean };
+  task: TodoItemType;
+  handleEdit:(task:TodoItemType) => void
 };
 
 export type TodoItemType = {
@@ -9,7 +10,17 @@ export type TodoItemType = {
 };
 
 
-export type Action = {type:'ADD-TODO', payload: TodoItemType} | {type:'FETCH-TODOS',payload: TodoItemType[]} | {type:'DELETE-TODO', payload: string}
+export type TodoProps = {
+  task: TodoItemType, addTask: React.Dispatch<React.SetStateAction<TodoItemType>>,
+  setVisible: React.Dispatch<React.SetStateAction<boolean>>,
+  visible: boolean
+}
+
+export type Action = 
+{type:'ADD-TODO', payload: TodoItemType} | 
+ {type:'EDIT-TODO', payload: TodoItemType} | 
+ {type:'FETCH-TODOS',payload: TodoItemType[]} |
+{type:'DELETE-TODO', payload: string}
 
 export interface State  {
   todos: [] | TodoItemType[]
