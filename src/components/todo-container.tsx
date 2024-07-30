@@ -3,7 +3,6 @@ import TodoItem from './todo-item'
 import Search from './Search'
 import { useTodoContextState } from '../context/TodoContext'
 import { nanoid } from 'nanoid'
-import Nav from './Nav'
 import { TodoItemType } from '../types'
 import { useState } from 'react'
 
@@ -30,11 +29,10 @@ function TodoContainer() {
         setVisible(true)
     }
     return (
-        <div className='w-1/2  overflow-y-scroll text-white p-4 rounded-lg shadow-lg h-[80vh] bg-todoContainer'>
+        <div className='w-1/2 relative flex flex-col  text-white p-4 rounded-lg shadow-lg h-[80vh] bg-todoContainer'>
 
             <Search />
-            <Nav />
-            {taskList}
+            {taskList.length > 0 ? taskList : <h2 className='justify-self-center place-items-center'>No Tasks Added</h2>}
             <TodoForm
                 task={task}
                 addTask={addTask}
