@@ -29,3 +29,5 @@ export type Action =
 export interface State  {
   todos: [] | TodoItemType[]
 }
+
+export type EventType = React.ChangeEvent<HTMLSelectElement>
