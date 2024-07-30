@@ -1,4 +1,3 @@
-
 function FilterTodos({ value, handleFilter }: { value: string, handleFilter: (event: React.ChangeEvent<HTMLSelectElement>) => void }) {
 
     return (

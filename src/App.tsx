@@ -1,6 +1,4 @@
 import Frame from "./components/frame"
-
-
 function App() {
 
   return (

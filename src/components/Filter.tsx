@@ -1,4 +1,3 @@
-
 function Filter({ value, handleCategoryChange }: { value: string, handleCategoryChange?: (event: React.ChangeEvent<HTMLSelectElement>) => void }) {
 
     return (
