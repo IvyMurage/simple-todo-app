@@ -21,7 +21,7 @@ switch(action.type){
     case 'EDIT-TODO':
         return {
             ...state,
-            todos: state.todos.map(todo => todo.id === action.payload.id ? ({...todo, title: action.payload.title}): todo)
+            todos: state.todos.map(todo => todo.id === action.payload.id ? action.payload: todo)
         }
     default:
         return state

@@ -1,7 +1,7 @@
 import { faFilter } from "@fortawesome/free-solid-svg-icons"
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 
-function Search() {
+function Search({ handleFilter }: { handleFilter: () => void }) {
     return (
         <form className="flex mb-8 relative justify-end items-center " >
             <input
@@ -10,7 +10,7 @@ function Search() {
                 name='search-todo'
                 className="px-2 py-2 outline-none bg-transparent border-b-1 border-b-frame "
             />
-            <FontAwesomeIcon icon={faFilter} className="absolute" />
+            <FontAwesomeIcon onClick={handleFilter} icon={faFilter} className="absolute cursor-pointer " />
         </form>
     )
 }

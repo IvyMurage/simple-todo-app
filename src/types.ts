@@ -1,12 +1,16 @@
+import { ReactNode } from "react";
+
 export type TodoItemProps = {
   task: TodoItemType;
   handleEdit:(task:TodoItemType) => void
+  children: ReactNode
 };
 
 export type TodoItemType = {
   id: string;
   title: string;
   isCompleted: boolean;
+  category: string
 };
 
 
