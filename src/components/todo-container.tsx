@@ -6,7 +6,6 @@ import { nanoid } from 'nanoid'
 import { EventType, TodoItemType } from '../types'
 import { useState } from 'react'
 import Filter from './Filter'
-import FilterTodos from './FilterTodos'
 
 
 function TodoContainer() {
@@ -20,7 +19,7 @@ function TodoContainer() {
         id: '',
         title: '',
         isCompleted: false,
-        category: ''
+        category: 'all'
     })
     const todos = state.todos.filter(todo => todo.title.toLowerCase().includes(search.toLowerCase()))
 
@@ -60,7 +59,7 @@ function TodoContainer() {
                 handleEdit={() => handleEdit(task)} >
                 <Filter
                     value={task.category}
-                    handleCategoryChange={(event) => handleCategoryChange(event, task)}
+                    handleFilter={(event) => handleCategoryChange(event, task)}
                 />
             </TodoItem>
         )
@@ -72,7 +71,7 @@ function TodoContainer() {
                 <Search handleFilter={() => handleClick()} handleSearch={handleSearch} value={search} />
             </div>
 
-            {filter && <FilterTodos value={filterValue} handleFilter={handleFilter} />}
+            {filter && <Filter value={filterValue} handleFilter={handleFilter} />}
             {taskList.length > 0 ? taskList : <h2 className='justify-self-center place-items-center'>No Tasks Added</h2>}
 
             <TodoForm
